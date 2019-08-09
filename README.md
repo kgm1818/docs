@@ -2,4 +2,4 @@
 
 > An awesome project.
 
-> docsify serve docs 运行
+> docsify serve 运行
