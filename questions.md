@@ -70,3 +70,53 @@
     例：如果父组件通过事件改变属性值时，并且用了v-if来控制子组件的显示，则子组件通过watch监听属性变化无效
     方案：用v-show控制子组件展示
 ```
+> 自适应和响应式的区别
+
+```zh
+    自适应： 是为不同类别的设备建立不同的网页，检测到设备分辨率大小后调用相应的网页。
+    响应式：是一套界面同时运行到pc端、平板、手机端各个不同的视口。通过检测设备的分辨率，来对页面做出不同的布局和内容。
+```
+> 关于h5获取经纬度存在的问题
+
+```zh
+    1. 如果网站是https的请求了http的一些资源，定位系统就会认为这个是不安全的，就会定位失败。
+    可能出现的效果：如果先加载了http的资源定位就会失败，如果先定位了，请求的http资源就会失败。
+```
+
+> Meta 标签定义 参数解释
+
+```zh
+width = device-width：宽度等于当前设备的宽度
+
+initial-scale： 初始的缩放比例（默认设置为1.0）
+
+minimum-scale：允许用户缩放到的最小比例（默认设置为1.0）
+
+maximum-scale：允许用户缩放到的最大比例（默认设置为1.0）
+
+user-scalable：用户是否可以手动缩放（默认设置为no，因为我们不希望用户放大缩小页面）
+```
+
+> 常见的一些网页布局单位
+
+```zh
+px：绝对单位，页面按精确像素展示
+
+em：相对单位，基准点为父节点字体的大小，如果自身定义了font-size按自身来计算（浏览器默认字体是16px），整个页面内1em不是一个固定的值。
+
+rem：相对单位，可理解为”root em”, 相对根节点html的字体大小来计算，CSS3新加属性，chrome/firefox/IE9+支持。
+
+(另外需注意chrome强制最小字体为12号，即使设置成 10px 最终都会显示成 12px，当把html的font-size设置成10px,子节点rem的计算还是以12px为基准，所以网上很多文章提到的将html的font-size设为10方便计算不是那么可取)。
+
+rem在移动端应用可参考淘宝的页面http://m.taobao.com (html的font-size通过动态计算获取)
+
+vw：viewpoint width，视窗宽度，1vw等于视窗宽度的1%。
+
+vh：viewpoint height，视窗高度，1vh等于视窗高度的1%。
+
+vmin：vw和vh中较小的那个。
+
+vmax：vw和vh中较大的那个。
+
+vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS safari 8+支持，Android browser4.4+支持，chrome for android39支持
+```
