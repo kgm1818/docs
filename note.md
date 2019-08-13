@@ -5,6 +5,15 @@ $ cd my-project
 $ npm install
 $ npm run dev
 ```
+##### vue-cli 3.0 搭建Vue项目
+
+```
+1. 安装vue-cli 3.0
+   npm i @vue/cli -g
+2. vue-cli搭建脚本文件
+   vue create vue-test
+```
+
 ##### git基本用法
 
 ```
