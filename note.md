@@ -4,6 +4,12 @@ $ vue init webpack my-project
 $ cd my-project
 $ npm install
 $ npm run dev
+// 使用scss
+    npm install  sass-loader -D
+    npm install  node-sass -D
+// 如果需要全局引入.scss文件的配置
+    npm install  sass-resources-loader -D
+    在项目里找到build/utils文件 如下修改
 ```
 ##### vue-cli 3.0 搭建Vue项目
 
