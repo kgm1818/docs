@@ -120,3 +120,8 @@ vmax：vw和vh中较大的那个。
 
 vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS safari 8+支持，Android browser4.4+支持，chrome for android39支持
 ```
+
+> 通过new Vue()实例传值时
+```
+    一定要销毁事件监听
+```
