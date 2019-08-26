@@ -5,4 +5,4 @@
 * [笔记](/note)
 * [踩过的坑](/questions)
 * [插件库](/plugin)
-* [JuoooUI](/juooo)
+<!-- * [JuoooUI](/juooo) -->
