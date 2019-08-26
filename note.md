@@ -29,3 +29,11 @@ $ npm run dev
 4. git commit -m'xxx'
 5. git push
 ```
+
+##### iconfont 用法
+```
+- 引入
+ <link rel="stylesheet" href="https://at.alicdn.com/t/font_1352771_ktvjvzhb1v.css">
+- 使用
+ <i class="iconfont ju-hk-count-down"></i>
+```
