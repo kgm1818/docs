@@ -7,13 +7,18 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <style>
+    .markdown-section{
+      max-width: 1000px;
+    }
+  </style>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '',
-      repo: '',
+      name: 'docsify',
+      repo: 'https://github.com/kgm1818/docs',
       loadSidebar: true,
       subMaxLevel: 3,
       loadNavbar: true,
@@ -21,9 +26,12 @@
       mergeNavbar: true,
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
-      }
+      },
+      search: 'auto',
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+  <script src="//unpkg.com/vue"></script>
 </body>
 </html>

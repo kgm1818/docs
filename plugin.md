@@ -302,7 +302,8 @@ export default {
 </style>
 ```
 
-#### 获取图片的颜色 getImageMeanColor
+### 获取图片的颜色 getImageMeanColor
+
 ```zh
     https://github.com/liyongleihf2006/getImageMeanColor
 ```
