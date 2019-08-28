@@ -37,3 +37,30 @@ $ npm run dev
 - 使用
  <i class="iconfont ju-hk-count-down"></i>
 ```
+
+##### 图片阴影实现案例
+```
+// html
+<div class="shade__wrap">
+    <img src="https://image.juooo.com//group1/M00/02/BA/rAoKmV0HKROANbIoAAC-qZa523k987.jpg" alt="" class="shade__wrap__img"/>
+</div>
+// css
+.shade{ 
+    &__wrap{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        &__img{
+            width: 100%;
+            height: 100%;
+            filter: blur(40px);
+        }
+    }
+}
+```
+- 效果：
+
+![阴影](./img/企业微信截图_15668930477104.png "图片")
