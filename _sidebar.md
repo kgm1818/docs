@@ -5,4 +5,4 @@
 * [笔记](/note)
 * [常见问题](/questions)
 * [插件库](/plugin)
-<!-- * [JuoooUI](/juooo) -->
+<!-- * [JuoooUI](/MochaUI/juooo) -->
