@@ -2,6 +2,7 @@
 ### ToDo
 
 - 接口公共处理
+- 画票图解决方案
 - UI库搭建(命名)doork-ui 简写 dr-button，Doork-ui
     来源：基于(Door lock)缩写
 - 如何发布私有的npm包

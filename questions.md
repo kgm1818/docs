@@ -122,6 +122,37 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
 ```
 
 > 通过new Vue()实例传值时
+
 ```
     一定要销毁事件监听
+```
+
+> 滚动穿透
+
+```zh
+ 现象：当弹层内上下滚动到顶部或底部时页面body也会一起滚动，
+ 解决方案：
+    在当弹层打开时给body添加class类
+    .prevent-scroll{
+        position: fixed;
+        height: 100%;
+    }
+    export function getPreventBodyScroll(bodyClass) {
+        let scrollTop;
+        return {
+        prevent: function() {
+            scrollTop = document.scrollingElement.scrollTop;
+            console.log(document.scrollingElement)
+            document.body.classList.add(bodyClass);
+            document.body.style.top = -scrollTop + 'px';
+        },
+        recover: function() {
+            document.body.classList.remove(bodyClass);
+            document.scrollingElement.scrollTop = scrollTop;
+        }
+        };
+    }
+    使用：
+    openDailog: getPreventBodyScroll.prevent('prevent-scroll');
+    closeDailog: getPreventBodyScroll.recover('prevent-scroll');
 ```

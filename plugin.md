@@ -41,7 +41,7 @@ axios.interceptors.response.use(function (config){
 ```
 ### vue-bspicker(城市选择插件)
 
-``` js
+``` html
 <template>
     <div class="area-dialog"
     v-show="showArea">
@@ -168,7 +168,7 @@ const COMPONENT_NAME = 'vue-city-picker'
 ```
 ### LayerDialog(自定义弹窗组件)
 
-``` js
+```html
 <template>
     <div class="buy-layer" v-show="show || showDialog">
         <transition name="fade">
@@ -304,6 +304,6 @@ export default {
 
 ### 获取图片的颜色 getImageMeanColor
 
-```zh
+```js
     https://github.com/liyongleihf2006/getImageMeanColor
 ```
