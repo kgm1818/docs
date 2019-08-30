@@ -129,10 +129,10 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
 
 > 滚动穿透
 
-```zh
- 现象：当弹层内上下滚动到顶部或底部时页面body也会一起滚动，
- 解决方案：
-    在当弹层打开时给body添加class类
+  现象：当弹层内上下滚动到顶部或底部时页面body也会一起滚动,  
+  解决方案：在当弹层打开时给body添加class类
+  
+```js
     .prevent-scroll{
         position: fixed;
         height: 100%;
@@ -152,7 +152,7 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
         }
         };
     }
-    使用：
+  // 使用：
     openDailog: getPreventBodyScroll.prevent('prevent-scroll');
     closeDailog: getPreventBodyScroll.recover('prevent-scroll');
 ```
