@@ -156,3 +156,23 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
     openDailog: getPreventBodyScroll.prevent('prevent-scroll');
     closeDailog: getPreventBodyScroll.recover('prevent-scroll');
 ```
+
+> iOS上input框调起输入法的一些现象
+
+  现象： input框调起输入法后页面不回退.
+  方案： input失去焦点时触发事件. ```@blur='temporaryRepair'```
+
+```js
+    export function temporaryRepair(){ // 解决iOS调出输入法后页面不回退的兼容问题
+        let currentPosition,timer;
+        let speed=1;//页面滚动距离
+        timer=setInterval(function(){
+            currentPosition=document.documentElement.scrollTop || document.body.scrollTop;
+            currentPosition-=speed;
+            window.scrollTo(0,currentPosition);//页面向上滚动
+            currentPosition+=speed; //speed变量
+            window.scrollTo(0,currentPosition);//页面向下滚动
+            clearInterval(timer);
+        },1);
+    }
+```

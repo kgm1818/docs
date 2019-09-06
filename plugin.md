@@ -39,266 +39,177 @@ axios.interceptors.response.use(function (config){
     return config
 })
 ```
-### vue-bspicker(城市选择插件)
+### 根据van-picker改造的(城市选择插件)
 
 ``` html
 <template>
-    <div class="area-dialog"
-    v-show="showArea">
-        <vue-picker 
-        v-show="showArea"
-        :data="linkageData" ref="picker" 
-        :selected-index="selectedIndex"
-         @select="select"
-         @cancel="handleCancel" 
-         @change="handleChange"></vue-picker>
+    <div class="picker-dialog"
+    v-show="showPicker">
+        <div v-if="showPicker" class="picker-dialog__content">
+            <van-picker 
+            show-toolbar
+            :columns="columns" 
+            @change="onChange" 
+            @cancel="onCancel"
+            @confirm="onConfirm"/>
+        </div>
     </div>
 </template>
 <script>
-import vuePicker from 'vue-bspicker'
-let province = [],
-    city = [],
-    area = [];
-var data = [province, city, area]
-const COMPONENT_NAME = 'vue-city-picker'
-	export default {
-        name: COMPONENT_NAME,
-        components: {
-			vuePicker
-		},
-        data () {
-            return {
-                showArea: false,
-                areaDialogShow: false,
-                data: [],
-                selectedIndex: [0, 0, 0],
-                tempIndex: [0, 0, 0],
-            }
-        },
-        computed: {
-	      	linkageData: function() {
-	      		this.data = this.data.length > 0 ? this.data : [province, city, area]
-                let provinceList = this.data[0];
-      			let cityList = this.data[1].filter((item) => {
-                    return item.parentId === provinceList[this.tempIndex[0]].value;
-                })
-				let areaList = [];
-      			if(cityList.length > 0){
-					areaList = this.data[2].filter((item) => {
-						return item.parentId === cityList[this.tempIndex[1]].value
-					})
-                  }
-		        return [provinceList, cityList, areaList]
-	      	}
-	    },
-        created() {
-             this.$event.$on('AREA_DIALOG_city', (obj) => {
-                 this.$refs.picker.show();
-                 this.showArea = true;        
-            })
-            this.$event.$on('INIT_CITY_DATA', _data => {
-                this.getProvince(_data)
-                this.data = data;
-            })
-        },
-        watch: {
-	        linkageData: function() {
-	        	this.$refs.picker.refresh()
-	        }
-	    },
-        methods: {
-            select(...rest){
-                this.showArea = false;
-                this.$event.$emit('SHIPPING_ADDRESS_CITY', rest[3]);
-            },
-            handleChange(index, curIndex){
-               if (curIndex !== this.tempIndex[index]) {
-		          	for (let j = 2; j > index; j--) {
-		            	this.tempIndex.splice(j, 1, 0)
-		            	this.$refs.picker.scrollTo(j, 0)
-		          	}
-                      this.tempIndex.splice(index, 1, curIndex)
-		        }
-            },
-            handleCancel(){
-                this.showArea = false;
-            },
-            getProvince(data){
-                for(var i=0; i<data.length; i++){
-                    province.push({
-                        value: data[i].id,
-                        text: data[i].name,
-                        parentId: 0})
-                        this.getCity(data[i].child, data[i].id)
-                }
-            },
-             getCity(data, _parentId){
-                for(var i=0; i<data.length; i++){
-                    city.push({
-                        value: data[i].id,
-                        text: data[i].name,
-                        parentId: _parentId})
-                       this.getArea(data[i].child, data[i].id)
-                }
-            },
-             getArea(data, _parentId){
-                for(var i=0; i<data.length; i++){
-                    area.push({
-                        value: data[i].id,
-                        text: data[i].name,
-                        parentId: _parentId})
-                }
-            }
-        },
-    }
-</script>
-<style scoped lang="scss">
-    .area-dialog{
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 100;
-    }
-    .confirm{
-        color: $c_ff6;
-    }
-</style>
-```
-### LayerDialog(自定义弹窗组件)
 
-```html
-<template>
-    <div class="buy-layer" v-show="show || showDialog">
-        <transition name="fade">
-            <div class="mask-layer" v-show="show"></div>
-        </transition>
-        <transition name="slide-fade"
-        @before-enter="beforeEnterLayer"
-        @after-leave="afterLeaveLayer">
-            <div class="buy-dialog" v-show="show">
-                <h3 class="buy-dialog__title">
-                    <span>{{titleDialog}}</span>
-                    <span class="buy-dialog__close--dialog" @click="handleCloseDialog"></span>
-                </h3>
-                <section class="buy-dialog__content">
-                    <slot></slot>
-                </section>
-            </div>
-        </transition>
-    </div>
-  </template>
-<script>
+import jsonp from 'jsonp'
 export default {
-  data () {
-    return {
-        showDialog: false,
-    }
-  },
-  props: {
-    titleDialog: String,
-    show: {
-      type: Boolean,
-      default: false
+    name: 'Picker',
+    data() {
+        return {
+            columns: [
+                {
+                    values: [],
+                    className: 'column1',
+                    defaultIndex: 0
+                },
+                {
+                    values: [],
+                    className: 'column2',
+                    defaultIndex: 0
+                },
+                 {
+                    values: [],
+                    className: 'column3',
+                    defaultIndex: 0
+                }
+            ],
+            cityList: [],
+            curProvinceList: [],
+            curCityList: [],
+            curDistrictList: [],
+            curProvinceId: "",
+            curCityId: "",
+            curDistrictId: "",
+            showPicker: false,
+        }
     },
-  },
-  created() {
-  },
-  methods: {
-      handleCloseDialog(){
-          this.$emit('CLOSE_DIALOG')
-      },
-      beforeEnterLayer(){
-          this.showDialog = true;
-      },
-      afterLeaveLayer(){
-        this.showDialog = false;
-      }
-  },
+    created() {
+        this.$event.$on('INIT_CITY_DATA', (data) => {
+            this.getInitData(data)
+        })
+        this.$event.$on('AREA_DIALOG_city', () => {
+            this.getInitData(this.cityList)
+            this.showPicker = true;
+        })
+    },
+    methods: {
+        onChange(picker, values, index){ // 当前列index0, 1, 2
+            const curProvince = values[0];
+            const curCity = values[1];
+            const curDistrict = values[2];
+            if(index === 0){
+                this.cityList.map( item => {
+                    if(item.name === curProvince){
+                        this.curCityList = this.getCurData(item.child); 
+                    }
+                })
+                this.cityList.map( item => {
+                    if(item.name === curProvince){
+                        item.child.map( sub => {
+                            if(sub.name === this.curCityList[0].name){
+                                this.curDistrictList = this.getCurData(sub.child);
+                            }
+                        })
+                    }
+                })
+                picker.setColumnValues(1, this.getCurName(this.curCityList));
+                picker.setColumnValues(2, this.getCurName(this.curDistrictList));
+                
+            }else if(index === 1){
+                 this.cityList.map( item => {
+                    if(item.name === curProvince){
+                        item.child.map( sub => {
+                            if(sub.name === curCity){
+                                this.curDistrictList = this.getCurData(sub.child);
+                            }
+                        })
+                    }
+                })
+                picker.setColumnValues(2, this.getCurName(this.curDistrictList));
+            }
+        },
+        getInitData(data){
+            if(data.length > 0){
+                this.curProvinceList = this.getCurData(data);
+                this.curCityList = this.getCurData(data[0].child);
+                this.curDistrictList = this.getCurData(data[0].child[0].child);
+            }
+            this.columns[0].values = this.getCurName(this.curProvinceList);
+            this.columns[1].values = this.getCurName(this.curCityList);
+            this.columns[2].values = this.getCurName(this.curDistrictList);
+            this.cityList= data;
+        },
+        getCurData(data){
+            let _data = data.map( item => {
+                return {
+                    name: item.name,
+                    id: item.id
+                }
+            })
+            return _data;
+        },
+        getCurName(data){
+             let _data = data.map( item => {
+                return item.name
+            })
+            return _data;
+        },
+        getCurId(curName, curData){
+            let curId;
+            curData.map( item => {
+                if(item.name ===curName){
+                    curId = item.id;
+                }
+            })
+            return curId
+        },
+        onConfirm(value, index) {
+            this.curProvinceId = this.getCurId(value[0], this.curProvinceList)
+            this.curCityId = this.getCurId(value[1], this.curCityList)
+            this.curDistrictId = this.getCurId(value[2], this.curDistrictList)
+            let cityArr = [];
+            cityArr[0] = {
+                name: value[0],
+                id: this.curProvinceId
+            }
+            cityArr[1] = {
+                name: value[1],
+                id: this.curCityId
+            }
+            cityArr[2] = {
+                name: value[2],
+                id: this.curDistrictId
+            }
+            this.$event.$emit('SHIPPING_ADDRESS_CITY', cityArr);
+            this.showPicker = false;
+        },
+        onCancel() {
+            this.showPicker = false;
+        }
+    },
 }
 </script>
-
-<style scoped lang="scss">
-    .slide-fade-enter-active {
-        transition: all .5s ease;
-    }
-    .slide-fade-leave-active {
-        transition: all .5s ease;
-    }
-    .slide-fade-enter,.slide-fade-leave-to{
-        transform: translateY(100%);
-    }
-    .fade-enter-active {
-        animation: fade-in .5s;
-    }
-    .fade-leave-active {
-        animation: fade-in .5s reverse;
-    }
-    @keyframes fade-in{
-        0% {
-            opacity: 0;
-        }
-        100% {
-         opacity: 1;
-        }
-    }
-
-    .buy-layer{
-        width: 100%;
-        height: 100%;
-        position: fixed;
+<style lang="scss" scoped>
+    .picker-dialog{
+        position: absolute;
         left: 0;
         top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(37,38,45,.4);
         z-index: 100;
-    }
-    .mask-layer{
-        background-color: rgba(0,0,0,0.6);
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 101;
-    }
-    .buy-dialog{
-        width: 100%;
-        height: 918px;
-        padding-top: 50px;
-        box-sizing: border-box;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 102;
-        background-color: $c_fe;
-        border-top-left-radius:15px;
-        border-top-right-radius:15px;
-        &__title{
-            height: 50px;
-            font-size: 40px;
-            font-weight: normal;
-            color: $c_23;
-            padding: 0 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            &__close--dialog{
-                width: 28px;
-                height: 28px;
-                display: block;
-                float: right;
-                @include bg('../../assets/buy/close.png');
-            }
-        }
         &__content{
-            margin-top: 40px;
-            height: 675px;
-            overflow-y: auto;
-            padding: 0 30px;
-            box-sizing: border-box;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
         }
     }
-
 </style>
 ```
 
