@@ -159,7 +159,7 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
 
 > iOS上input框调起输入法的一些现象
 
-  现象： input框调起输入法后页面不回退.
+  现象： input框调起输入法后页面不回退.<br>
   方案： input失去焦点时触发事件. ```@blur='temporaryRepair'```
 
 ```js
@@ -176,3 +176,7 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
         },1);
     }
 ```
+> 翻牌功能开发遇到的兼容问题
+
+  现象：旋转.<br>
+  思路：http://webfront-js.com/articaldetail/129.html

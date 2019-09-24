@@ -64,3 +64,17 @@ $ npm run dev
 - 效果：
 
 ![阴影](./assets/img/企业微信截图_15668930477104.png "图片")
+
+##### 对象的深拷贝方法
+- Object
+  ```js
+  const a1 = {name: "", id: ""}
+  const a2 = Object.assign({}, a1)
+  ```
+- Array 
+  ```js
+   es5:     const a1 = [1,2,3]
+            const a2 = a1.concat(al)
+   es6:     const a1 = [1,3,5,6]
+            const a2 = [...a1] // [...a2] = a1
+  ```
