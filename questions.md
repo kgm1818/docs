@@ -180,3 +180,7 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
 
   现象：旋转.<br>
   思路：http://webfront-js.com/articaldetail/129.html
+
+> 两种方式的区别
+
+![区别](./assets/img/企业微信截图_15694679051893.png "图片")
