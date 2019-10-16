@@ -112,3 +112,8 @@ $ npm run dev
 ![keep-alive](./assets/img/企业微信截图_15697512757104.png "图片")
 
 ![keep-alive](./assets/img/企业微信截图_15697513058054.png "图片")
+
+##### 如期转时间戳的兼容写法
+```js
+    let times = new Date('2019-10-16 14:23:59'.replace(/-/g, '/')).getTime()
+```
