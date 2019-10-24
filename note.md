@@ -25,9 +25,12 @@ $ npm run dev
 ```
 1. git stash save
 2. git pull
-3. git add ./
-4. git commit -m'xxx'
-5. git push
+3. git stash pop
+4. git add ./
+5. git commit -m'xxx'
+6. git push
+// --------
+git checkout ./  丢弃更改
 ```
 
 ##### iconfont 用法

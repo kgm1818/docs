@@ -11,6 +11,6 @@ Password: juooo123
 ```
 - 发包 
 ```html
-npm pubulish
+npm publish
 ```
     
