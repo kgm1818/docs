@@ -184,3 +184,10 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
 > 两种方式的区别
 
 ![区别](./assets/img/企业微信截图_15694679051893.png "图片")
+
+> 精度缺失
+```
+ parseInt(1111.11 * 100) // 111110
+ parseFloat(1111.11 * 100).toFixed(0) // 111111
+
+```
