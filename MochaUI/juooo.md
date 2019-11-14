@@ -13,4 +13,3 @@ Password: juooo123
 ```html
 npm publish
 ```
-    
