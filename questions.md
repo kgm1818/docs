@@ -191,3 +191,11 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
  parseFloat(1111.11 * 100).toFixed(0) // 111111
 
 ```
+> 小程序通过```getPhoneNumber```获取手机号
+```js
+    // 用户拒接两端不同报错提示 detail.errMsg
+    ios: "getPhoneNumber:fail user deny"
+    Android: "getPhoneNumber:user deny"
+    // 允许
+    统一: "getPhoneNumber:ok"
+```
