@@ -30,7 +30,8 @@ $ npm run dev
 5. git commit -m'xxx'
 6. git push
 // --------
-git checkout ./  丢弃更改
+git checkout ./  丢弃所有更改
+git checkout -- 文件名  // 丢弃某个文件更改
 ```
 
 ##### iconfont 用法
@@ -137,4 +138,10 @@ git checkout ./  丢弃更改
  <div @click.self="doThat">...</div>
  // 遮罩层阻止默认滚动事件
  <div class="child" @touchmove.prevent ></div>
+```
+
+#### 正则解构路由URL
+```js
+    const regExp = /(\w+):\/\/([^/:]+)(:\d*)?([^# ]*)/;
+    const arr = URL.match(regExp)
 ```
