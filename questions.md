@@ -199,3 +199,10 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
     // 允许
     统一: "getPhoneNumber:ok"
 ```
+> 采用 overflow-y:auto 的滚动问题
+```zh
+    问题： 在一些手机上滚动不流畅
+    方案： 在设置了overflow-y:auto的dom上加样式 -webkit-overflow-scrolling:touch;
+    风险：某些设置 position: fixed 的dom会跟着一起滚动，解决方案视布局而定
+    例：设置 position: fixed 和 overflow-y:的dom不能在同一级
+```
