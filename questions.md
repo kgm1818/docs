@@ -206,3 +206,8 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
     风险：某些设置 position: fixed 的dom会跟着一起滚动，解决方案视布局而定
     例：设置 position: fixed 和 overflow-y:的dom不能在同一级
 ```
+> 实现点透功能
+```zh
+ 问题： 有些功能需要实现点击上层DOM下层DOM接受到事件
+ 方案：给上层DOM添加样式：pointer-events: none;
+```
