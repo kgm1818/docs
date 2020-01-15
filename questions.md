@@ -211,3 +211,4 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
  问题： 有些功能需要实现点击上层DOM下层DOM接受到事件
  方案：给上层DOM添加样式：pointer-events: none;
 ```
+> 小程序中两个js文件相互引用会导致栈溢出现象（应尽量避免）
