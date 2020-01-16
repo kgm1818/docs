@@ -218,3 +218,8 @@ export default {
 ```js
     https://github.com/liyongleihf2006/getImageMeanColor
 ```
+### 小程序中识别html标签的插件
+
+```js
+ [wxParse](https://blog.csdn.net/weixin_38423356/article/details/78076312 "这是链接")
+```
