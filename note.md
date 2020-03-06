@@ -152,3 +152,28 @@ git checkout -- 文件名  // 丢弃某个文件更改
     const regExp = /(\w+):\/\/([^/:]+)(:\d*)?([^# ]*)/;
     const arr = URL.match(regExp)
 ```
+#### 更新安装包版本
+```zh
+    在以前可能就是直接改package.json里面的版本，然后再npm install了，但是5版本后就不支持这样做了，因为版本已经锁定在package-lock.json里了，所以我们只能npm install xxx@x.x.x  这样去更新我们的依赖，然后package-lock.json也能随之更新。
+```
+
+#### RSA加密工具
+```js
+    // 公钥例子
+ const PUBLIC_KEY = `-----BEGIN PUBLIC KEY-----
+	MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyvrVNCDKcN9sGujXqAdj
+	a3L9hYl76Tx/hiWxCvtVE+kgUSZFOPpSHA0hbX3S/+fGh1kGR989IETLRNhn860W
+	4WOrbtPFSFRQP1uGseH8Of3dU5v+XrZBVuhicSFXhfnGgJpig+Lkx
+	tlGpy01H5XA2Q7iyi2Oa7BCrSx0sb/CfGjFpKTyEmQqkgUw3C2NJkgwjCG9CrJiI
+	jt2W5xdhdazP3jPWRRemx5bE+GtkhvZETFErIkUb55vNiXc/rYZWOa3+SZpw8oey
+	pQIDAQAB
+        -----END PUBLIC KEY-----`
+    // 安装 jsencrypt 
+    import Rsa from "jsencrypt";
+    // 创建加密实例
+    const rsa = new Rsa();
+    // 初始化公钥
+    rsa.setPublicKey(PUBLIC_KEY)
+    // 加密数据
+    const data = rsa.setPublicKey(data)
+```
