@@ -177,3 +177,12 @@ git checkout -- 文件名  // 丢弃某个文件更改
     // 加密数据
     const data = rsa.setPublicKey(data)
 ```
+#### vue中强制更新
+```js
+    // 当更新某些对象数据时，页面没有更新
+    1.运用this.$forceUpdate()强制刷新
+    2.使用vm.$set(vm.items, indexOfItem, newValue)
+    // 例：
+    // vm.$set(vm.dataList[i],  state, false) 
+    // vm.$set(vm.dataObj,  state, false) 
+```
