@@ -224,3 +224,12 @@ export default {
  [wxParse](https://blog.csdn.net/weixin_38423356/article/details/78076312 "这是链接")
 ```
 [wxParse](https://github.com/kgm1818?tab=repositories "识别HTML标签")
+
+### vue-jsonp 用法
+```js
+    this.$jsonp(url,{}).then((data)=> {
+        //
+    }).catch(error => {
+        //
+    })
+```
