@@ -186,3 +186,44 @@ git checkout -- 文件名  // 丢弃某个文件更改
     // vm.$set(vm.dataList[i],  state, false) 
     // vm.$set(vm.dataObj,  state, false) 
 ```
+#### 大屏兼容终端原理
+```js
+// 
+    getScale(){
+        // 分辨率
+        const width = window.screen.width;
+        const height = window.screen.height;
+        // 文档宽高
+        let ww = window.innerWidth/width
+        let wh = window.innerHeight/height
+        return ww < wh ? ww : wh
+    },
+    initStyle(){
+        const width = window.screen.width; 
+        const height = window.screen.height;
+        const scale = this.getScale()
+        this.domStyle = {
+            transform: `scale(${scale}) translate(-50%, -50%)`,
+            WebkitTransform: `scale(${scale}) translate(-50%, -50%)`,
+            width: width + 'px',
+            height: height + 'px'
+        }
+    },
+```
+```css
+    .scale-box{
+        transform-origin: 0 0;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transition: 0.3s;
+    }
+```
+<!-- #### 原理
+```zh
+ 实现选座原理
+    1.画座位图
+    2.缩放
+    3.拖拽
+    4.选中事件
+``` -->
