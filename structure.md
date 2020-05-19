@@ -1,3 +1,4 @@
+```
 ├── public                              //
 │   ├── favicon.ico                     // 图标
 │   ├── index.html                      // 入口html文件
@@ -31,3 +32,4 @@
 ├── package.json                        // 安装包信息
 ├── package-lock.json                   // 锁定安装包的版本号
 ├── README.md                           // 文档
+```

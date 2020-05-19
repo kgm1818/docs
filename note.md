@@ -1,5 +1,5 @@
 ##### vue项目搭建步骤
-```html
+```zh
 $ vue init webpack my-project
 $ cd my-project
 $ npm install
@@ -22,7 +22,7 @@ $ npm run dev
 
 ##### git基本用法
 
-```
+```bash
 1. git stash save
 2. git pull
 3. git stash pop
@@ -42,7 +42,7 @@ git checkout -- 文件名  // 丢弃某个文件更改
 ```
 
 ##### iconfont 用法
-```
+```html
 - 引入
  <link rel="stylesheet" href="https://at.alicdn.com/t/font_1352771_ktvjvzhb1v.css">
 - 使用
@@ -50,7 +50,7 @@ git checkout -- 文件名  // 丢弃某个文件更改
 ```
 
 ##### 图片阴影实现案例
-```
+```html
 // html
 <div class="shade__wrap">
     <img src="https://image.juooo.com//group1/M00/02/BA/rAoKmV0HKROANbIoAAC-qZa523k987.jpg" alt="" class="shade__wrap__img"/>
@@ -184,7 +184,7 @@ git checkout -- 文件名  // 丢弃某个文件更改
     2.使用vm.$set(vm.items, indexOfItem, newValue)
     // 例：
     // vm.$set(vm.dataList[i],  state, false) 
-    // vm.$set(vm.dataObj,  state, false) 
+    // vm.$set(vm.dataObj,  state, false)
 ```
 #### 大屏兼容终端原理
 ```js
