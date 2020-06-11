@@ -219,6 +219,26 @@ git checkout -- 文件名  // 丢弃某个文件更改
         transition: 0.3s;
     }
 ```
+#### 小程序使用try...catch语法出现的问题
+```js
+   // 有的微信版本会抛出错误
+   	Can't find variable: regeneratorRuntime; [Component] SetData Callback Error @ pages/choosefarm/index#(anonymous)
+    at getFarmList (app-service.js:1689:1185)
+    at getFarmList (native code)
+    at (app-service.js:1689:1118)
+    at safeCallback (WASubContext.js:2:1345773)
+    at value (WASubContext.js:2:1519510)
+    at (WASubContext.js:2:1517168)
+    at r (WASubContext.js:2:1417732)
+    at (WASubContext.js:2:1417854)
+    at (WASubContext.js:2:605326)
+    at (WAServiceMainContext.js:2:225318)
+    at _ (WAServiceMainContext.js:2:77637)
+    global code
+    // 解决办法
+    // 在微信开发者工具中》本地设置》勾选增强编译
+```
+
 <!-- #### 原理
 ```zh
  实现选座原理
