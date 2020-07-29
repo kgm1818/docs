@@ -241,6 +241,14 @@ git checkout -- 文件名  // 丢弃某个文件更改
     // 在微信开发者工具中》本地设置》勾选增强编译
 ```
 
+#### 检测是不是触摸设备
+```js
+function isTouchDevice() {
+    //返回true，false
+    return 'ontouchstart' in document.documentElement;
+}
+```
+
 <!-- #### 原理
 ```zh
  实现选座原理
