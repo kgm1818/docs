@@ -6,5 +6,5 @@
 * [常见问题](/questions)
 * [插件库](/plugin)
 * [注意事项](/cautions)
-* [vue项目结构模型](/structure)
+<!-- * [vue项目结构模型](/structure) -->
 <!-- * [JuoooUI](/MochaUI/juooo) -->

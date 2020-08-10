@@ -124,7 +124,7 @@ git checkout -- 文件名  // 丢弃某个文件更改
 
 ![keep-alive](./assets/img/企业微信截图_15697513058054.png "图片")
 
-##### 如期转时间戳的兼容写法
+##### 日期转时间戳的兼容写法
 ```js
     let times = new Date('2019-10-16 14:23:59'.replace(/-/g, '/')).getTime()
 ```
@@ -236,7 +236,7 @@ git checkout -- 文件名  // 丢弃某个文件更改
     at _ (WAServiceMainContext.js:2:77637)
     global code
     // 原因 es6语法
-    try...catch 
+    try...catch
     // 解决办法
     // 在微信开发者工具中》本地设置》勾选增强编译
 ```
