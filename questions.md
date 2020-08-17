@@ -140,16 +140,16 @@ vw, vh, vmin, vmax：IE9+局部支持，chrome/firefox/safari/opera支持，iOS 
     export function getPreventBodyScroll(bodyClass) {
         let scrollTop;
         return {
-        prevent: function() {
-            scrollTop = document.scrollingElement.scrollTop;
-            console.log(document.scrollingElement)
-            document.body.classList.add(bodyClass);
-            document.body.style.top = -scrollTop + 'px';
-        },
-        recover: function() {
-            document.body.classList.remove(bodyClass);
-            document.scrollingElement.scrollTop = scrollTop;
-        }
+            prevent: function() {
+                scrollTop = document.scrollingElement.scrollTop;
+                console.log(document.scrollingElement)
+                document.body.classList.add(bodyClass);
+                document.body.style.top = -scrollTop + 'px';
+            },
+            recover: function() {
+                document.body.classList.remove(bodyClass);
+                document.scrollingElement.scrollTop = scrollTop;
+            }
         };
     }
   // 使用：

@@ -248,6 +248,25 @@ function isTouchDevice() {
     return 'ontouchstart' in document.documentElement;
 }
 ```
+#### 文本溢出...
+```css
+/* 多行 */
+.multi-ellipsis(@lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: @lines;
+
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+}
+/* 单行 */
+.ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+```
 
 <!-- #### 原理
 ```zh
