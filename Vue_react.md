@@ -18,4 +18,17 @@ angular.js 是通过脏值检测的方式比对数据是否有变更，来决定
 #### Vue 原理理解
 1. Vue 采用数据劫持结合发布者-订阅者模式，通过```Object.defineProperty()```来劫持各个属性的setter,getter,在数据变动时发布消息给订阅者，触发相应的监听回调
 
-2. 
+2. 渐进式原理
+
+3. 虚拟Dom
+
+```js
+// js对象,dom信息的对象
+// 例
+const a = (
+  { type: ‘ul’, props: { className: ‘list’ }, children: [
+    { type: ‘li’, props: {}, children: [‘item 1’] },
+    { type: ‘li’, props: {}, children: [‘item 2’] }
+  ] }
+);
+```
