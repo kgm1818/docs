@@ -23,12 +23,18 @@ angular.js 是通过脏值检测的方式比对数据是否有变更，来决定
 3. 虚拟Dom
 
 ```js
+// virtual Dom 是将真实的Dom的数据抽取出来，以对象的形式模拟树形结构
 // js对象,dom信息的对象
 // 例
-const a = (
-  { type: ‘ul’, props: { className: ‘list’ }, children: [
-    { type: ‘li’, props: {}, children: [‘item 1’] },
-    { type: ‘li’, props: {}, children: [‘item 2’] }
+const Vnode = (
+  { type: "ul", props: { className: "list" }, children: [
+    { type: "li", props: {}, children: ["item 1"] },
+    { type: "li", props: {}, children: ["item 2"] }
   ] }
 );
+```
+4. diff算法
+
+```bash
+本质：找两个对象之间的差异,尽可能复用节点
 ```
