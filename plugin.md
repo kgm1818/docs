@@ -233,3 +233,30 @@ export default {
         //
     })
 ```
+### tween 补间动画
+```bash
+#  安装
+npm install @tweenjs/tween.js -S
+
+# 使用案例
+new TWEEN.Tween({ 
+    # start
+    number: oldValue
+})
+.to({
+    # target
+    number: newValue
+}, 1000)
+.onUpdate(tween => {
+    this.numTween = tween.number.toFixed(0)
+})
+.start()
+function animate() {
+    if (TWEEN.update()) {
+        requestAnimationFrame(animate);
+    }
+}
+animate()
+
+```
+### threeJs 
